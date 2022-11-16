@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/jquery.bxslider.min.css">
+   
+    <style>
+        @font-face {
+            font-family: 'eng';
+            src: url(./font/GowunDodum-Regular.ttf)
+        }
+        @font-face {
+            font-family: 'slow';
+            src: url(./font/GowunBatang-Bold.ttf)
+        }
+        body{font-family: 'slow'; }
+        header{width: 100%; height: 70px; 
+             margin: auto; 
+            position: relative;}
+        nav{width: 100%; position: fixed; padding:0 2em; background-color: rgb(55, 68, 35);
+            display: flex; justify-content: space-between; z-index: 99999;}
+        nav>h1{line-height: 2.7em; color: #fff;  font-size: 26px; padding-left: 0.3em; padding-bottom: 0.3em;}
+        .titleDouble{display: none;color: #fff;  font-size: 26px;  }
+        .lnb>ul{width: 100%; display: flex;  }
+        .lnb>ul>li{ font-size: 16px; padding: 1.4em 2em;}
+        .lnb a{color: #fff;}
+       
+        .gnb>ul{display: flex; width: 100%;   }
+        .gnb>ul>li{padding: 2em 0.5em; color: #fff;}
+        .gnb img{width: 16px; height: 16px; }
+        .gnb a{color: #fff;}
+        .gnb>.iconImg{display: none;}
+        /* header end */
+        
+        section{width: 100%;  margin: auto; overflow: hidden; 
+            }
+        .parentBack{width: 100%; height: 100vh; margin: auto;   }
+        .backgroundImg{position: relative;}
+        .backgroundImg img{opacity: 0.2; }
+        .backgroundImg>img:nth-child(1){ position: absolute; top: -220px; left: 0;}
+        .backgroundImg>img:nth-child(2){ position: absolute; top: -300px; right: 0;}
+        .backgroundImg>img:nth-child(3){ position: absolute; top: 600px; left: 1300px;}
+        .backgroundImg>img:nth-child(4){ position: absolute; top: 300px; left: 1320px;}
+        .backgroundImg>img:nth-child(5){ position: absolute; top: 300px; left: 10px;}
+
+        .parentMain{width: 1440px; height: 100vh; margin: auto; position: relative;   }
+        .mainBanner{width: 100%; height: 100vh; margin:auto;   }
+        .mainBanner>img{width: 100%; }
+        .mainBanner_600{width: 100%;  margin:auto; display: none;  }
+        .mainBanner_600>img{width: 100%; }
+
+        .top{width: 50px; height: 50px; position: fixed; right: 50px; bottom: 50px;
+            background-color: rgb(55, 68, 35); text-align: center; line-height: 50px;
+            color: #fff; z-index: 9999999;
+         }
+         
+        .content01{ width: 100%;height: 100vh; margin: auto;  }
+        .content01>h2{font-size: 30px; line-height: 8em; text-align: center; }
+        .parentContent{width: 1440px; margin: auto;  }
+       .content01Img{width: 1000px; height: 100vh; margin: auto;  }
+       .content01Img>div{width: 23%; text-align: center; }
+        .content01Img>div>img{width: 100%;  }
+        .content01Img>div>p{width: 100%;  padding: 1em; text-align: center;}
+        .content01Img>div>p:nth-of-type(1){font-size: 20px; padding: 1em;}
+
+        .content2Box{display: none;}
+        .contentBox{display: none;}
+        .content2Box>div>p{width: 100%;  padding: 1em; text-align: center;}
+        .contentBox>div>p{width: 100%;  padding: 1em; text-align: center;}
+        .content2Box>div>p:nth-of-type(1){font-size: 20px; padding: 1em;}
+        .contentBox>div>p:nth-of-type(1){font-size: 20px; padding: 1em;}
+
+        .bx-wrapper {
+            box-shadow:none;
+            border:none;
+            background: #fff;
+        }
+        /* .bx-wrapper .bx-prev {
+        left: 10%; 
+        }
+        .bx-wrapper .bx-next {
+        right: 10%;
+        } */
+       
+        .bx-wrapper .bx-controls-direction a {
+            margin-top: -50px;
+        }
+        .bx-wrapper .bx-pager {
+            font-size: 0;
+        }
+        .bx-viewport:nth-of-type(2){
+            background-color: #959b89;
+        }
+
+        .youtubeBack{width: 100%; height: 100vh; margin: auto; text-align: center;  }
+        .youtube{width: 1440px; height: 100vh; margin: auto; text-align: center;  }
+        .youtube>video{width: 1000px;  height: 100vh; margin: auto; background-color: #4b5539; }
+
+        /* video end */
+
+        .content02{ width: 100%;height: 100vh; margin: auto; }
+        .content02>h2{font-size: 30px; line-height: 8em; text-align: center; }
+        .parentC02{width: 1440px; height: 100vh; margin: auto;}
+        /* .content02Img{width: 1000px;  margin: auto; }
+        .content02Img>div{width: 23%;  text-align: center;  }
+        .content02Img>div>img{width: 100%;  }
+        .content02Img>div>p{width: 100%; padding: 1em;text-align: center;}
+        .content02Img>div>p:nth-of-type(1){font-size: 20px; padding: 1em;} */
+
+        /* content02 end */
+        
+        .subBanner{width:1440px;  margin: auto;  text-align: center;}
+        .subBanner>img{width: 100%;margin: auto; }
+        .subBanner2{width:1440px;  margin: auto;  text-align: center;}
+        .subBanner2>img{width: 100%;margin: auto; }
+
+        .content03{width: 100%; padding: 40px; margin: auto; display: flex; justify-content:space-around;}
+        .content03>div{width: 50%; margin: auto;}
+        .leftImg{width: 80%; margin: auto;}
+        .leftImg>img{width: 100%; margin: auto;}
+        .rightText{width: 80%; text-align:justify; padding: 50px; color: #4b5539;
+                     line-height: 5em; margin: auto;}
+        .rightText>h2{font-size: 30px;}
+        .rightText>h3{font-size: 20px;}
+
+        .footerBack{ width: 100%; }
+        .footerBack>img:nth-child(1){width: 50%; position: absolute; z-index: 99;  opacity: 0.2; transform: translateY(8%); left: 0; }
+        .footerBack>img:nth-child(2){width: 50%; position: absolute; 
+            transform: translateY(8%);   opacity: 0.2;  right: 0;}
+        /* footer design */
+        footer{width: 100%;  margin: auto; background: linear-gradient(rgb(255, 255, 255, 20%),rgb(55, 68, 35))  }
+        .footer{width: 100%; position: relative;  }
+        .footerText{padding:7em 5em; line-height: 2.5em; color: rgb(255, 255, 255);
+            text-align: center;}
+        /* .footerColor{width: 100%; height: 40%; bottom: -40%; position: absolute; background-color: #f1eee5;} */
+        /* submenu design */
+     
+        .submenu{width: 100%; transition: 1s; opacity: 0; background-color: rgb(55, 68, 35);
+             position:absolute; top: 70px; left: 0; line-height: 3em; 
+             display: flex;justify-content: space-evenly;}
+        .submenu>li{padding: 2em; font-size: 16px;}
+        .lnb>ul>li:hover ul{ opacity: 1; }
+        .lnb>ul>li:hover{text-decoration: underline;}
+       
+
+        .close{display: block;}
+
+        @media screen and (max-width:1400px){
+        
+
+        }
+      
+        @media screen and (max-width:1280px){
+            nav>h1{line-height: 2.7em; color: #fff;  font-size: 26px; padding-left: 0.3em; padding-bottom: 0.4em;}
+            .lnb>ul>li{font-size: 14px; padding: 1.8em 2em}
+            .gnb>ul>li{padding: 2em 0.5em; color: #fff;}
+            .gnb img{width: 16px; height: 16px; }
+            .gnb a{color: #fff; font-size: 11px;}
+            .parentMain{width: 100%; height: 100vh;}
+            .backgroundImg>img:nth-child(1){position:absolute;  
+                top:-200px; left: 80px;}
+             .parentContent{width: 100%;}  
+             .content01Img{width: 100%;}  
+             .content01Img>div{width: 23%; text-align: center; }
+             
+            
+            .youtube{width: 100%;}
+            .youtube>video{width: 100%;}
+            .parentC02{width:100%; margin: auto;}
+            .content02Img{width: 100%;  margin: auto; }
+            .subBanner{width: 100%; }
+            .content03{width: 100%; height: 100vh;}
+            .subBanner2{width: 100%; }
+           
+            .footerBack>img:nth-child(1){width: 50%; position: absolute; z-index: 99;  opacity: 0.2;  left: 0; }
+            .footerBack>img:nth-child(2){width: 50%; position: absolute; 
+                                  opacity: 0.2;  right: 0;}
+            }
+        
+        
+        @media screen and (max-width:980px){
+            nav>h1{line-height: 2.7em; color: #fff;  font-size: 24px; 
+                padding-left: 0.3em; padding-top: 0.3em;}
+            .lnb>ul{padding-right: 2em;}
+            .lnb>ul>li{font-size: 14px; padding: 2.3em 2em}
+            .gnb>ul{display: none;}
+            .gnb>.iconImg{display: block; }
+            .iconImg img{width: 40px; height: 40px;}
+
+            .parentBack{width: 100%;  margin: auto;   }
+            .backgroundImg>img:nth-child(1){ position: absolute; top: -300px; left: 0;}
+            .content01{ width: 100%; height: auto; margin: auto;  }
+       
+            .mainBanner{width: 100%;  margin:auto;   }
+            .mainBanner>img{width: 100%; }
+            .content01>h2{font-size: 28px; line-height: 5em; padding-top: 1.6em;text-align: center; }
+            .parentContent{width: 100%; margin: auto;  }
+           .content02>h2{font-size: 28px;}
+            .footerColor{display: none;}
+            .backgroundImg>img{position:absolute;  
+                            width: 80%;
+                            top:0px; left: 80px;}
+            .top{ position: fixed; right: 30px; bottom: 50px; border-radius: 40px;
+                    background-color: rgb(55, 68, 35); text-align: center; line-height: 50px;
+                    color: #fff; z-index: 9999999;
+             }
+             .subBanner{width: 100%; }
+             .content02>h2{font-size: 28px; line-height: 5em; padding-top: 1.6em; text-align: center; }
+             .rightText{padding: 30px; padding-left: 80px;}
+             .rightText>h2{font-size: 20px;}
+            .rightText>h3{font-size: 16px;}
+
+            .content01Img{display: none;}
+            .contentBox{display: block;}
+            .bx-wrapper .bx-controls-direction a {
+                display: none;
+            }
+            .footerBack>img:nth-child(1){width: 50%; position: absolute; z-index: 99;  opacity: 0.2; transform: translateY(10%); left: 0; }
+            .footerBack>img:nth-child(2){width: 50%; position: absolute; 
+                transform: translateY(20%);   opacity: 0.2;  right: 0;}
+            /* footer design */
+           
+            .footer{width: 100%; position: relative;  }
+            .footerText{padding: 6em; line-height: 3em; color: rgb(255, 255, 255);
+                text-align: center;} 
+        } 
+        @media screen and (max-width:680px){
+           
+            nav>h1{line-height: 2.6em; color: #fff;  font-size: 28px; text-align: center;
+                padding-left: 39%; padding-top: 0.1em;}
+            .lnb{display: none;}
+            .content01>h2{font-size: 26px; line-height: 1em; text-align: center; 
+                        padding:0em 2em 2em 2em;
+            }
+            .youtubeBack{height: auto;}
+           
+           
+            .mainBanner{display: none;}
+            .mainBanner_600{display: block; }
+            
+            .backgroundImg{display: none;}
+            .bx-wrapper .bx-controls-auto .bx-start{display: none;}
+            .bx-wrapper .bx-pager.bx-default-pager a{display: none;}
+            .bx-wrapper .bx-controls-auto .bx-stop{display: none;}
+            
+            .rightText{padding: 20px; padding-left: 60px;}
+             .rightText>h2{font-size: 16px;}
+            .rightText>h3{font-size: 14px;}
+
+            .footer{width: 100%; height: 100vh; margin:auto; position: relative;  }
+            .footerText{padding: 6em; padding-top: 50%; line-height: 3em; color: rgb(255, 255, 255);
+                text-align: center;} 
+            .footerBack>img:nth-child(1){width: 50%; position: absolute; z-index: 99;  opacity: 0.2; 
+                bottom: 10%; left: 0; }
+            .footerBack>img:nth-child(2){width: 50%; position: absolute; 
+                bottom: 10%;   opacity: 0.2;  right: 0;}
+            
+        }
+        @media screen and (max-width:540px){
+           
+            nav>h1{line-height: 2.6em; color: #fff;  font-size: 28px; text-align: center;
+                padding-left: 36%; padding-top: 0.1em;}
+            .contentBox{display: none;}
+            .content2Box{display: block; margin:0 auto;}
+            .content01>h2{font-size: 24px; line-height: 0em; padding: 0; text-align: center; }
+            .youtubeBack{height: fit-content;}
+           .top{right: 3%;}
+           .content02>h2{font-size: 24px; line-height: 2em; text-align: center; 
+                        padding-top: 4em;
+            }
+            .subBanner2{display: none;}
+            .subBanner{display: none;}
+            .content03{display:block}
+            .content03>div{width: 100%;}
+            .rightText{width: 100%; text-align: center; padding-top: 6em; padding-left: 0;}
+            .footerText{padding: 6em; padding-top: 50%; line-height: 3em; color: rgb(255, 255, 255);
+                text-align: center;} 
+          
+        }
+
+    </style>
+</head> 
+<body>
+    <header>
+        <nav>
+            <h1 class="titleDouble">slowglow</h1>
+            <h1>slowglow</h1>      
+            <div class="lnb">
+               <ul>
+                    <li class="shopMenu"><a href="#">SHOP</a>
+                        <ul class="submenu">
+                            <li><a href="#">Low</a></li>
+                            <li><a href="#">Slow</a></li>
+                            <li><a href="#">Glow</a></li>
+                            <li><a href="#">Ritual Kit</a></li>
+                        </ul>
+                        
+                    </li>
+                    <li class="comMenu"><a href="#">COMPONENT</a>
+                        <ul class="submenu">
+                            <li><a href="#">저탄고지</a>
+                                <ul class="naming">
+                                    <li><a href="#">아티초크</a></li>
+                                    <li><a href="#">아티초크</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">다이어트</a>
+                                <ul class="naming">
+                                    <li><a href="#">아티초크</a></li>
+                                    <li><a href="#">아티초크</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">비타민</a></li>
+                            <li><a href="#">에너지</a></li>
+                            <li><a href="#">스킨</a></li>
+                            <li><a href="#">릴렉스</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">ABOUT</a>
+                        <ul class="submenu">
+                            <li><a href="#">slow</a></li>
+                            <li><a href="#">glow</a></li>
+                          
+                            
+                        </ul>
+                    </li>
+                    <li><a href="#">NOTICE</a>
+                        <ul class="submenu">
+                            
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">Q&A</a></li>
+                            <li><a href="#">이벤트</a></li>
+                            <li><a href="#">팝업스토어</a></li>
+                        </ul>
+                    </li>
+               </ul>
+              
+            </ul>
+            </div>
+            
+            <div class="gnb">
+                <ul>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#"><img src="./icon_img/search (2).png"></a></li>
+                    <li><a href="#"><img src="./icon_img/search (1).png"></a></li>
+                    
+                </ul>
+                <ul class="iconImg">
+                    <li><a href="#">
+                        <img src="./icon_img/hambergur.png" alt="">
+                    </a></li>
+                </ul>
+            </div>
+           
+        </nav>
+    </header>
+    
+    <section>
+        <div class="parentBack">
+            <div class="parentMain">
+                <div class="mainBanner">
+                    <img src="./banner_img/mainbanner.png" alt="">
+                    <img src="./banner_img/mainbanner04.png" alt="">
+                </div>
+                <div class="mainBanner_600">
+                    <img src="./banner_img/smallbanner03.png" alt="">
+                    <img src="./banner_img/smallbanner05.png" alt="">
+                </div>
+                
+            </div>
+            <div class="backgroundImg">
+                <img src="./banner_img/footerBack.png" alt="">
+               
+                
+             </div>
+        </div>
+       
+        <div class="top">TOP</div>
+        
+        <div class="content01">
+            <h2>product</h2>
+                <div class="parentContent">
+                    <div class="content01Img">
+                        <div class="product01">
+                            <img src="./banner_img/Aset.jpg" alt="slow low then glow">
+                             <p>A set</p>
+                             <p>58,700</p>
+                    
+                        </div>
+                        <div class="product02">
+                            <img src="./banner_img/Bset.jpg" alt="slow low then glow">
+                             <p>B set</p>
+                             <p>57,900</p>
+                        </div>
+                        <div class="product03">
+                            <img src="./banner_img/Cset.jpg" alt="slow low then glow">
+                             <p>C set</p>
+                             <p>57,000</p>
+                        </div>
+                        <div class="product04">
+                            <img src="./banner_img/Dset.jpg" alt="slow low then glow">
+                             <p>D set</p>
+                             <p>59,800</p>
+                        </div>
+                        <div class="product05">
+                            <img src="./banner_img/Eset.jpg" alt="slow low then glow">
+                             <p>E set</p>
+                             <p>58,900</p>
+                        </div>
+                        <div class="product06">
+                            <img src="./banner_img/Fset.jpg" alt="slow low then glow">
+                             <p>F set</p>
+                             <p>57,400</p>
+                        </div>
+                        <div class="product07">
+                            <img src="./banner_img/Gset.jpg" alt="slow low then glow">
+                             <p>G set</p>
+                             <p>59,900</p>
+                        </div>
+                        <div class="product08">
+                            <img src="./banner_img/Hset.jpg" alt="slow low then glow">
+                             <p>H set</p>
+                             <p>53,400</p>
+                        </div>
+                        <div class="product09">
+                            <img src="./banner_img/Iset.jpg" alt="slow low then glow">
+                             <p>I set</p>
+                             <p>57,100</p>
+                        </div>
+                    
+                    </div>
+                    <div class="contentBox">
+                        <div class="product01">
+                            <img src="./banner_img/Aset.jpg" alt="slow low then glow">
+                             <p>A set</p>
+                             <p>58,700</p>
+                    
+                        </div>
+                        <div class="product02">
+                            <img src="./banner_img/Bset.jpg" alt="slow low then glow">
+                             <p>B set</p>
+                             <p>57,900</p>
+                        </div>
+                        <div class="product03">
+                            <img src="./banner_img/Cset.jpg" alt="slow low then glow">
+                             <p>C set</p>
+                             <p>57,000</p>
+                        </div>
+                        <div class="product04">
+                            <img src="./banner_img/Dset.jpg" alt="slow low then glow">
+                             <p>D set</p>
+                             <p>59,800</p>
+                        </div>
+                        <div class="product05">
+                            <img src="./banner_img/Eset.jpg" alt="slow low then glow">
+                             <p>E set</p>
+                             <p>58,900</p>
+                        </div>
+                        <div class="product06">
+                            <img src="./banner_img/Fset.jpg" alt="slow low then glow">
+                             <p>F set</p>
+                             <p>57,400</p>
+                        </div>
+                        <div class="product07">
+                            <img src="./banner_img/Gset.jpg" alt="slow low then glow">
+                             <p>G set</p>
+                             <p>59,900</p>
+                        </div>
+                        <div class="product08">
+                            <img src="./banner_img/Hset.jpg" alt="slow low then glow">
+                             <p>H set</p>
+                             <p>53,400</p>
+                        </div>
+                        <div class="product09">
+                            <img src="./banner_img/Iset.jpg" alt="slow low then glow">
+                             <p>I set</p>
+                             <p>57,100</p>
+                        </div>
+                    
+                    </div>
+                    <div class="content2Box">
+                        <div class="product01">
+                            <img src="./banner_img/Aset.jpg" alt="slow low then glow">
+                             <p>A set</p>
+                             <p>58,700</p>
+                    
+                        </div>
+                        <div class="product02">
+                            <img src="./banner_img/Bset.jpg" alt="slow low then glow">
+                             <p>B set</p>
+                             <p>57,900</p>
+                        </div>
+                        <div class="product03">
+                            <img src="./banner_img/Cset.jpg" alt="slow low then glow">
+                             <p>C set</p>
+                             <p>57,000</p>
+                        </div>
+                        <div class="product04">
+                            <img src="./banner_img/Dset.jpg" alt="slow low then glow">
+                             <p>D set</p>
+                             <p>59,800</p>
+                        </div>
+                        <div class="product05">
+                            <img src="./banner_img/Eset.jpg" alt="slow low then glow">
+                             <p>E set</p>
+                             <p>58,900</p>
+                        </div>
+                        <div class="product06">
+                            <img src="./banner_img/Fset.jpg" alt="slow low then glow">
+                             <p>F set</p>
+                             <p>57,400</p>
+                        </div>
+                        <div class="product07">
+                            <img src="./banner_img/Gset.jpg" alt="slow low then glow">
+                             <p>G set</p>
+                             <p>59,900</p>
+                        </div>
+                        <div class="product08">
+                            <img src="./banner_img/Hset.jpg" alt="slow low then glow">
+                             <p>H set</p>
+                             <p>53,400</p>
+                        </div>
+                        <div class="product09">
+                            <img src="./banner_img/Iset.jpg" alt="slow low then glow">
+                             <p>I set</p>
+                             <p>57,100</p>
+                        </div>
+                    
+                    </div>
+                </div>      
+        </div>
+
+        <div class="youtubeBack">
+            <div class="youtube">
+                <video autoplay muted>
+                    <source src="./video/slowglow dessert.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="content02">           
+                <h2>Set Item</h2>
+                <div class="parentC02">
+                    <div class="content01Img">
+                        <div class="product01">
+                            <img src="./banner_img/content02_1.png" alt="slow low then glow">
+                             <p>AEFH</p>
+                             <p>158,700</p>
+                    
+                        </div>
+                        <div class="product02">
+                            <img src="./banner_img/content02_2.png" alt="slow low then glow">
+                             <p>DGI</p>
+                             <p>147,800</p>
+                        </div>
+                        <div class="product03">
+                            <img src="./banner_img/content02_3.png" alt="slow low then glow">
+                             <p>BG</p>
+                             <p>98,700</p>
+                        </div>
+                        <div class="product04">
+                            <img src="./banner_img/content02_4.png" alt="slow low then glow">
+                             <p>AFH</p>
+                             <p>138,900</p>
+                        </div>
+                        <div class="product05">
+                            <img src="./banner_img/content02_5.png" alt="slow low then glow">
+                             <p>AEH</p>
+                             <p>137,800</p>
+                        </div>
+                    
+                    </div>
+                    <div class="contentBox">
+                        <div class="product01">
+                            <img src="./banner_img/content02_1.png" alt="slow low then glow">
+                             <p>AEFH</p>
+                             <p>158,700</p>
+                    
+                        </div>
+                        <div class="product02">
+                            <img src="./banner_img/content02_2.png" alt="slow low then glow">
+                             <p>DGI</p>
+                             <p>147,800</p>
+                        </div>
+                        <div class="product03">
+                            <img src="./banner_img/content02_3.png" alt="slow low then glow">
+                             <p>BG</p>
+                             <p>98,700</p>
+                        </div>
+                        <div class="product04">
+                            <img src="./banner_img/content02_4.png" alt="slow low then glow">
+                             <p>AFH</p>
+                             <p>138,900</p>
+                        </div>
+                        <div class="product05">
+                            <img src="./banner_img/content02_5.png" alt="slow low then glow">
+                             <p>AEH</p>
+                             <p>137,800</p>
+                        </div>
+                    
+                    </div>
+                    <div class="content2Box">
+                        <div class="product01">
+                            <img src="./banner_img/content02_1.png" alt="slow low then glow">
+                             <p>AEFH</p>
+                             <p>158,700</p>
+                    
+                        </div>
+                        <div class="product02">
+                            <img src="./banner_img/content02_2.png" alt="slow low then glow">
+                             <p>DGI</p>
+                             <p>147,800</p>
+                        </div>
+                        <div class="product03">
+                            <img src="./banner_img/content02_3.png" alt="slow low then glow">
+                             <p>BG</p>
+                             <p>98,700</p>
+                        </div>
+                        <div class="product04">
+                            <img src="./banner_img/content02_4.png" alt="slow low then glow">
+                             <p>AFH</p>
+                             <p>138,900</p>
+                        </div>
+                        <div class="product05">
+                            <img src="./banner_img/content02_5.png" alt="slow low then glow">
+                             <p>AEH</p>
+                             <p>137,800</p>
+                        </div>
+                    
+                    </div>
+                </div>
+        </div>
+        <!-- <div class="subBanner">
+            <img class="del01" src="./banner_img/subbanner.png" alt="">   
+        </div> -->
+        <div class="content03">
+            <div class="leftImg">
+                <img src="./banner_img/contentimg.png" alt="">
+            </div>
+            <div class="rightText">
+                <h2>당신의 내면을 돌보는 시간</h2>
+                <h3>성분의 다름을 느껴보세요</h3>
+                <h3>조금씩 변화하는 나를 느껴보세요</h3>
+            </div>
+        </div>
+        <div class="subBanner2">
+            <img src="./banner_img/banner_03.png" alt="">
+        </div>
+       
+    </section>
+
+    <footer>
+        <div class="footer">
+            <div class="footerColor"></div>
+            <div class="footerBack">
+                <img src="./banner_img/footerBack.png" alt="">
+                <img src="./banner_img/footerBack.png" alt="">
+            </div>
+            <div class="footerText">
+                (주)그레이고<br>
+                 고객센터 1522-6529 | 이용약관 | 개인정보처리방침<br>
+                 대표이사:이준호 | 사업자등록번호:221-82-88004 사업자정보확인 | 주소 : 서울 중랑구 중화동 300 | <br>
+                  E-mail : slowglow@gray-com | 개인정보보호책임자 : 오성영<br>
+                 COPYRIGHT &amp; SLOWGLOW.COM.KR ALL RIGHT reserved
+                
+            </div>
+            
+        </div>
+    
+
+    </footer>
+
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/jquery.bxslider.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script>
+        // $(document).ready(function(){
+        //     $('.shopMenu').click(function(){
+        //         if($('.submenu').hasClass('submenu')){
+        //             $('.shopMenu').addClass('close').removeClass('submenu');
+        //             $('.submenu').css('visibility', 'visible');
+        //         }else if($('.close').hasClass('close')){
+        //             $('.shopMenu').addClass('submenu').removeClass('close');
+        //             $('.submenu').css('visibility', 'hidden');
+        //         }
+        //     });
+        // });
+
+
+           
+            
+            $('.mainBanner').bxSlider({
+                auto: true,
+                autoControls: true,
+                stopAutoOnClick: true,
+                pager: true, 
+            });
+            $('.mainBanner_600').bxSlider({
+                auto: true,
+                autoControls: false,
+                stopAutoOnClick: true,
+                pager: false, 
+                touchEnabled: false,
+                    controls: false,
+            });
+           
+
+            $('.content01Img').bxSlider({
+                    mode: 'horizontal',
+                    pagerType:'short',
+                    moveSlides: 1,
+                    slideWidth: 300,
+                    slideMargin: 90,
+                    infiniteLoop: true,
+                    minSlides: 4,
+                    maxSlides: 4,
+                    speed: 400,
+                    auto: true,
+                });
+           
+
+            $('.content02Img').bxSlider({
+                    mode: 'horizontal',
+                    pagerType:'short',
+                    moveSlides: 1,
+                    slideWidth: 300,
+                    slideMargin: 90,
+                    infiniteLoop: true,
+                    minSlides: 4,
+                    maxSlides: 4,
+                    speed: 400,
+                    auto: true,
+                    
+                });
+
+                $('.contentBox').bxSlider({
+                    mode: 'horizontal',
+                    pagerType:'short',
+                    moveSlides: 1,
+                    slideWidth: 300,
+                    slideMargin: 60,
+                    infiniteLoop: true,
+                    minSlides: 3,
+                    maxSlides: 3,
+                    speed: 400,
+                    auto: true,
+                    touchEnabled: false,
+                    controls: false,
+                    
+                    
+                });
+
+                $('.content2Box').bxSlider({
+                    mode: 'horizontal',
+                    pagerType:'short',
+                    moveSlides: 1,
+                    slideWidth: 300,
+                    slideMargin: 30,
+                    infiniteLoop: true,
+                    minSlides: 2,
+                    maxSlides: 2,
+                    speed: 400,
+                    auto: true,
+                    touchEnabled: false,
+                    controls: false,
+                    
+                    
+                });
+        $('.top').click(function(){
+         $('html, body').animate({'scrollTop': 0});
+        })
+    </script>
+</body>
+</html>
+<!-- $('.shopMenu').mouseenter(function(){
+    $('.submenu').addClass('active');
+})
+$('.shopMenu').mouseleave(function(){
+    $('.submenu').removeClass('active');
+}) -->
